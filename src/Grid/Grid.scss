@@ -1,0 +1,39 @@
+@use '../base';
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 233px;
+  height: 193px;
+  border: 1px solid base.$grid-card-border;
+  border-radius: 8px;
+  margin: .7em;
+
+  &__img {
+    background-color: base.$grey;
+    height: 124px;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &__info {
+    height: 68px;
+    justify-content: left;
+    align-items: center;
+  }
+
+  &__name {
+    margin: auto;
+  }
+
+  &__line {
+    margin: auto;
+  }
+}

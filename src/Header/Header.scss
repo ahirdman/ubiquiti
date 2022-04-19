@@ -1,0 +1,31 @@
+@use '../base';
+
+.header {
+  background-color: base.$grey;
+  height: 56px;
+  align-items: center;
+
+
+  &__img {
+    position: absolute;
+    left: -1px;
+  }
+
+  &__text {
+    margin-left: 4em;
+    margin-right: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--title {
+      color: base.$header-text;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    &--author {
+       font-size: 14px;
+    }
+  }
+}

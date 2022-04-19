@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import { IDevice } from './interfaces';
+import Header from './Header/Header';
+import Toolbar from './Toolbar/Toolbar';
+import Devices from './Devices/Devices';
+import Grid from './Grid/Grid'
+import './App.scss';
 
 function App() {
+  const [devices, setDevices] = useState<IDevice[]>()
+  const [gridView, setGridView] = useState(false)
+  
+  const getUi = async () => {
+    const query = await fetch('https://static.ui.com/fingerprint/ui/public.json');
+    const json = await query.json();
+    setDevices(json.devices)
+  }
+
+  useEffect(() => {
+    getUi();
+  }, [])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Toolbar gridView={gridView} setGridView={setGridView}/>
+      {gridView ?
+        <Grid devices={devices} />
+        :
+        <Devices devices={devices} />
+      }
+    </>
   );
 }
 

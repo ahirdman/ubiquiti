@@ -1,0 +1,50 @@
+@use '../base';
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
+
+.table-list {
+  // margin: 1em;
+  width: 100%;
+  
+  &__header {
+    text-align: left;
+    
+    &--counter {
+      
+    }
+    
+    &--line {
+      
+    }
+    
+    &--name {
+      
+    }
+  }
+}
+
+.table-row {
+  margin: .5em;
+  border: 1px solid black;
+  
+  &:hover {
+    background-color: base.$table-row-hover;
+  }
+  
+  &__img {
+
+  }
+  
+  &__line {
+
+  }
+
+  &__name {
+
+  }
+}
