@@ -12,20 +12,24 @@
   }
 
   &__text {
-    margin-left: 4em;
+    margin-left: 4.5em;
     margin-right: 2em;
+    height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     &--title {
       color: base.$header-text;
+      letter-spacing: -0.5px;
+      font-size: 20px;
       margin-top: 0px;
       margin-bottom: 0px;
     }
 
     &--author {
        font-size: 14px;
+       color: rgba(0, 0, 0, 0.65);
     }
   }
 }

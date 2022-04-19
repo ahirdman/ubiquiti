@@ -6,8 +6,13 @@
   align-items: center;
   border-bottom: 1px solid base.$border;
   height: 48px;
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-right: 2em;
+  padding-left: 1.8em;
+
+  &__icon {
+    position: absolute;
+    left: 38px;
+  }
 
   &__search {
     background-color: base.$grey;
@@ -15,11 +20,17 @@
     border-radius: 4px;
     height: 32px;
     width: 344px;
-    padding-left: 30px;
+    padding-left: 35px;
+    caret-color: base.$blue;
 
-    &:active {
-      // border: none;
+    &:focus {
+      outline: none;
     }
+  }
+
+  &__close {
+    position: absolute;
+    left: 380px;
   }
 
   &__label {
@@ -35,10 +46,12 @@
 
     &--list {
       height: 20px;
+      width: 20px;
     }
 
     &--grid {
       height: 20px;
+      width: 20px;
     }
 
     &--filter {
