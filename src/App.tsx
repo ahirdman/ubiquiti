@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { IDevice } from './utils/interfaces';
 import { getDevices } from './utils';
 import Header from './Header/Header';
 import Toolbar from './Toolbar/Toolbar';
-import Devices from './List/List';
+import List from './List/List';
 import Grid from './Grid/Grid';
+import Device from './Device/Device';
 import './App.scss';
 
 const App = () => {
@@ -25,9 +27,15 @@ const App = () => {
         setFilter={setFilter}
         devices={devices}
       />
-      {gridView
-        ? <Grid devices={filter} />
-        : <Devices devices={filter} />}
+      <Routes>
+        {gridView
+          ? <Route path="/" element={<Grid devices={filter} />} />
+          : <Route path="/" element={<List devices={filter} />} />}
+        <Route
+          path="/device/:shortname"
+          element={<Device devices={devices} />}
+        />
+      </Routes>
     </>
   );
 };

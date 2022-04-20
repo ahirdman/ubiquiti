@@ -57,6 +57,12 @@
     &--filter {
       height: 24px;
       margin: 0px;
+      border: none;
+      background: none;
+
+      &:hover {
+        color: base.$blue;
+      }
     }
   }
 }

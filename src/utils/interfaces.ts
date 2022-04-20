@@ -40,6 +40,7 @@ interface IToolbarProps {
 }
 
 interface IDeviceView {
+  device?: IDevice
   devices?: IDevice[]
 }
 
