@@ -1,0 +1,35 @@
+@use '../base';
+
+.filter {
+  background-color: white;
+  box-shadow: -5px 12px 20px 0px #c6c6c6;
+  position: relative;
+  right: 236px;
+  top: 102px;
+  padding: 1em;
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+
+    &--title {
+
+    }
+
+    &--close {
+
+    }
+  }
+
+  &__tilte {
+
+  }
+
+  &__option {
+    width: 256px;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}

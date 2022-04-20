@@ -1,44 +1,26 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IDevice } from './interfaces';
+import { getDevices, filterDevices } from './utils';
 import Header from './Header/Header';
 import Toolbar from './Toolbar/Toolbar';
-import Devices from './Devices/Devices';
-import Grid from './Grid/Grid'
+import Devices from './List/List';
+import Grid from './Grid/Grid';
 import './App.scss';
 
-const getUi = async (callback:any) => {
-  const query = await fetch('https://static.ui.com/fingerprint/ui/public.json');
-  const json = await query.json();
-  callback(json.devices)
-}
-
 function App() {
-  const [devices, setDevices] = useState<IDevice[]>()
-  const [filter, setFilter] = useState<IDevice[]>()
-  const [gridView, setGridView] = useState(false)
-  const [query, setQuery] = useState('')
+  const [devices, setDevices] = useState<IDevice[]>();
+  const [filter, setFilter] = useState<IDevice[]>();
+  const [gridView, setGridView] = useState(false);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    getUi(setDevices);
-  }, [])
-
-  // useEffect(() => {
-  //   setFilter(devices)
-  //   console.log(filter)
-  // }, [devices])
-  
-  
-  const searchResults = (searchText:string) => {
-    const regExp = new RegExp(searchText, 'gmi');
-    return devices?.filter((d) => regExp.test(d.product.name))
-  }
+    getDevices(setDevices, setFilter);
+  }, []);
 
   useEffect(() => {
-    const searchResult = searchResults(query)
-    setFilter(searchResult)
-    console.log(filter)
-  }, [query])
-  
+    const searchResult = filterDevices(query, devices);
+    setFilter(searchResult);
+  }, [query]);
 
   return (
     <>
@@ -49,11 +31,9 @@ function App() {
         query={query}
         setQuery={setQuery}
       />
-      {gridView ?
-        <Grid devices={devices} />
-        :
-        <Devices devices={devices} />
-      }
+      {gridView
+        ? <Grid devices={filter} />
+        : <Devices devices={filter} />}
     </>
   );
 }
