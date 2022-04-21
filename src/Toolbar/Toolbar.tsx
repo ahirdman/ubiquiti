@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { filterDevices, searchDevices, productLines } from '../utils';
+import { IToolbarProps } from '../utils/interfaces';
+import { CheckBox } from '../utils/types';
 import Filter from '../Filter/Filter';
-import './Toolbar.scss';
 import listDefault from '../assets/list/list-default.svg';
 import listActive from '../assets/list/list-active.svg';
 import gridDefault from '../assets/grid/grid-default.svg';
 import gridActive from '../assets/grid/grid-active.svg';
 import magnifier from '../assets/Search-icon.svg';
 import close from '../assets/Close-icon.svg';
-import { IToolbarProps } from '../utils/interfaces';
-import { CheckBox } from '../utils/types';
+import back from '../assets/Back-icon.svg';
+import './Toolbar.scss';
 
 const Toolbar = ({
-  gridView, setGridView, setFilter, devices,
+  gridView, setGridView, setFilter, devices, deviceDetails,
 }: IToolbarProps) => {
   const [displayFilter, setDisplayFilter] = useState(false);
   const [query, setQuery] = useState('');
   const [checked, setChecked] = useState<CheckBox[]>();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const detailsPath = location.pathname.includes('device');
+
   useEffect(() => {
-    const products = productLines.map((productLine:string) => ({ isChecked: false, productLine }));
+    const products = productLines
+      .map((productLine: string) => ({ isChecked: false, productLine }));
     setChecked(products);
   }, []);
 
@@ -38,7 +45,17 @@ const Toolbar = ({
     setFilter(searchResult);
   }, [query, checked]);
 
-  return (
+  return detailsPath && deviceDetails ? (
+    <nav className="toolbar">
+      <img
+        className="toolbar__back"
+        src={back}
+        alt="back"
+        onClick={() => navigate('/')}
+      />
+      <p className="toolbar__label">{deviceDetails[2].info}</p>
+    </nav>
+  ) : (
     <nav className="toolbar">
       <img src={magnifier} alt="focus" className="toolbar__icon" />
       <input
@@ -48,7 +65,6 @@ const Toolbar = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {/* <h2 className='toolbar__label'>Label</h2> */}
       <img
         src={close}
         alt="close"
@@ -76,11 +92,11 @@ const Toolbar = ({
         </button>
       </section>
       {displayFilter && (
-        <Filter
-          setDisplayFilter={setDisplayFilter}
-          checked={checked}
-          setChecked={setChecked}
-        />
+      <Filter
+        setDisplayFilter={setDisplayFilter}
+        checked={checked}
+        setChecked={setChecked}
+      />
       )}
     </nav>
   );

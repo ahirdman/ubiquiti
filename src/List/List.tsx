@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IDevice, IDeviceView } from '../utils/interfaces';
+import { IDevice, IDeviceViewProps } from '../utils/interfaces';
 import { imgUrlCreator } from '../utils';
 import './List.scss';
 
-const List = ({ devices }: IDeviceView) => {
+const List = ({ devices }: IDeviceViewProps) => {
   const navigate = useNavigate();
 
   const navigateDevice = (shortname: string) => {
@@ -26,9 +26,18 @@ const List = ({ devices }: IDeviceView) => {
           </tr>
         </thead>
         <tbody>
-          {devices && (devices.map((device:IDevice, index:number) => (
-            <tr className="table-row" key={index} onClick={() => navigateDevice(device.shortnames[0])}>
-              <td className="table-row__img"><img src={imgUrlCreator(device.icon.id, 51)} alt="device-img" /></td>
+          {devices && (devices.map((device: IDevice, index: number) => (
+            <tr
+              className="table-row"
+              key={index}
+              onClick={() => navigateDevice(device.shortnames[0])}
+            >
+              <td className="table-row__img">
+                <img
+                  src={imgUrlCreator(device.icon.id, 51)}
+                  alt="device-img"
+                />
+              </td>
               <td className="table-row__line">{device.line.name}</td>
               <td className="table-row__name">{device.product.name}</td>
             </tr>

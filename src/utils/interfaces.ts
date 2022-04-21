@@ -23,6 +23,49 @@ interface IDevice {
       k1: string,
     }
   ]
+  unifi?: {
+    network?: {
+      radios?: {
+        na?: {
+          maxPower?: number;
+          maxSpeedMegabitsPerSecond?: number;
+        };
+      };
+      numberOfPorts?: number;
+    };
+  };
+}
+
+interface IDeviceDetails {
+  product: {
+    name: string
+  }
+  line: {
+    id: string,
+  }
+  shortnames: [string]
+  unifi?: {
+    network?: {
+      radios?: {
+        na?: {
+          maxPower?: number;
+          maxSpeedMegabitsPerSecond?: number;
+        };
+      };
+      numberOfPorts?: number;
+    };
+  };
+}
+
+interface IDeviceObject {
+  title: string
+  info: string | number
+}
+
+interface IDeviceViewProps {
+  deviceDetails?: IDeviceDetails
+  device?: IDevice
+  devices?: IDevice[]
 }
 
 /* eslint-disable no-unused-vars */
@@ -33,20 +76,25 @@ interface IFilterProps {
 }
 
 interface IToolbarProps {
+  deviceDetails?: IDeviceObject[]
   gridView: boolean
   setGridView: (prevState: boolean) => void
   setFilter: (prevState: IDevice[]) => void
   devices?: IDevice[]
 }
 
-interface IDeviceView {
-  device?: IDevice
+interface IDeviceProps {
   devices?: IDevice[]
+  setDeviceDetails: (prevState: IDeviceObject[]) => void
+  deviceDetails?: IDeviceObject[]
 }
 
 export type {
   IDevice,
   IFilterProps,
   IToolbarProps,
-  IDeviceView,
+  IDeviceViewProps,
+  IDeviceDetails,
+  IDeviceProps,
+  IDeviceObject,
 };

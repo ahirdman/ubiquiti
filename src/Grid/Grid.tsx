@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IDevice, IDeviceView } from '../utils/interfaces';
+import { IDevice, IDeviceViewProps } from '../utils/interfaces';
 import { imgUrlCreator } from '../utils';
 import './Grid.scss';
 
-const Grid = ({ devices }: IDeviceView) => {
+const Grid = ({ devices }: IDeviceViewProps) => {
   const navigate = useNavigate();
 
   const navigateDevice = (shortname: string) => {

@@ -1,5 +1,34 @@
 @use '../base';
 
 .device {
-  color: base.$grey
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  // max-width: 688px;
+
+  &__image {
+
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+
+    &--title {
+
+    }
+
+    &--info {
+
+    }
+  }
 }

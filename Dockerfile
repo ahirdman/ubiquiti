@@ -2,12 +2,16 @@ FROM node:14-alpine
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install
 
-COPY app/. .
+COPY . .
 
 RUN npm run build
+
+ENV PORT=8080
+
+EXPOSE 8080
 
 CMD ["npm", "start"]

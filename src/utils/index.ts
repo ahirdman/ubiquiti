@@ -1,4 +1,4 @@
-import { IDevice } from './interfaces';
+import { IDevice, IDeviceDetails } from './interfaces';
 
 const imgUrlCreator = (id: string, res: number) => {
   const resolution = `${res}x${res}`;
@@ -22,10 +22,42 @@ const filterDevices = (filterArray: string[], searchObject: IDevice[]): IDevice[
 
 const productLines = ['UniFi', 'UniFi LTE', 'UniFi Protect', 'UniFi Access', 'airMAX', 'EdgeMAX'];
 
+const deviceGenerator = (device: IDeviceDetails) => [
+  {
+    title: 'Product Line',
+    info: device.product.name,
+  },
+  {
+    title: 'ID',
+    info: device.line.id,
+  },
+  {
+    title: 'Name',
+    info: device.product.name,
+  },
+  {
+    title: 'Shortname',
+    info: device.shortnames[0],
+  },
+  {
+    title: 'Max.power',
+    info: device.unifi?.network?.radios?.na?.maxPower || 'NA',
+  },
+  {
+    title: 'Speed',
+    info: device.unifi?.network?.radios?.na?.maxSpeedMegabitsPerSecond || 'NA',
+  },
+  {
+    title: 'Number of ports',
+    info: device.unifi?.network?.numberOfPorts || 'NA',
+  },
+];
+
 export {
   imgUrlCreator,
   getDevices,
   searchDevices,
   filterDevices,
   productLines,
+  deviceGenerator,
 };
