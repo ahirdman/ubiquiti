@@ -12,39 +12,33 @@ const List = ({ devices }: IDeviceViewProps) => {
   };
 
   return (
-    <main className="table-container">
-      <table className="table-list">
-        <thead>
-          <tr className="table-list__header">
-            <th className="table-list__header--counter">
-              {devices && (devices.length)}
-              {' '}
-              devices
-            </th>
-            <th className="table-list__header--line">PRODUCT LINE</th>
-            <th className="table-list__header--name">NAME</th>
-          </tr>
-        </thead>
-        <tbody>
-          {devices && (devices.map((device: IDevice, index: number) => (
-            <tr
-              className="table-row"
-              key={index}
-              onClick={() => navigateDevice(device.shortnames[0])}
-            >
-              <td className="table-row__img">
-                <img
-                  src={imgUrlCreator(device.icon.id, 51)}
-                  alt="device-img"
-                />
-              </td>
-              <td className="table-row__line">{device.line.name}</td>
-              <td className="table-row__name">{device.product.name}</td>
-            </tr>
-          )))}
-        </tbody>
-      </table>
-    </main>
+    <ul className="table-list">
+      <li className="table-list__header">
+        <p className="table-list__header--counter">
+          {devices && (devices.length)}
+          {' '}
+          devices
+        </p>
+        <p className="table-list__header--line">PRODUCT LINE</p>
+        <p className="table-list__header--name">NAME</p>
+      </li>
+      {devices && (devices.map((device: IDevice, index: number) => (
+        <li
+          className="table-list__row"
+          key={index}
+          onClick={() => navigateDevice(device.shortnames[0])}
+        >
+          <section className="table-list__row--img">
+            <img
+              src={imgUrlCreator(device.icon.id, 25)}
+              alt="device-img"
+            />
+          </section>
+          <p className="table-list__row--line">{device.line.name}</p>
+          <p className="table-list__row--name">{device.product.name}</p>
+        </li>
+      )))}
+    </ul>
   );
 };
 

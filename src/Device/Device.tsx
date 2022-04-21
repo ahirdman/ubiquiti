@@ -14,26 +14,28 @@ const Device = ({ devices, setDeviceDetails, deviceDetails }: IDeviceProps) => {
   }, []);
 
   return (
-    <section className="device">
-      <section className="device__image">
-        {selectedDevice && (
+    <main className="device-container">
+      <section className="device">
+        <section className="device__image">
+          {selectedDevice && (
           <img
             src={imgUrlCreator(selectedDevice.icon.id, 257)}
             alt="device"
           />
-        )}
+          )}
+        </section>
+        <article className="device__table">
+          {deviceDetails && (
+            deviceDetails.map((device: IDeviceObject, index: number) => (
+              <section className="device__row" key={index}>
+                <p className="device__row--title">{device.title}</p>
+                <p className="device__row--info">{device.info}</p>
+              </section>
+            ))
+          )}
+        </article>
       </section>
-      <article className="device__table">
-        {deviceDetails && (
-          deviceDetails.map((device: IDeviceObject, index: number) => (
-            <section className="device__row" key={index}>
-              <p className="device__row--title">{device.title}</p>
-              <p className="device__row--info">{device.info}</p>
-            </section>
-          ))
-        )}
-      </article>
-    </section>
+    </main>
   );
 };
 

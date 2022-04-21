@@ -15,13 +15,13 @@
   }
 
   &__search {
-    background-color: base.$grey;
     border: none;
     border-radius: 4px;
     height: 32px;
     width: 344px;
     padding-left: 35px;
     caret-color: base.$blue;
+    background-color: base.$grey;
 
     &:focus {
       outline: none;
@@ -32,11 +32,17 @@
     position: absolute;
     left: 380px;
     cursor: pointer;
+    fill: base.$blue;
+
+    &:hover {
+    }
   }
 
-  // &__label {
-
-  // }
+  &__label {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+    line-height: 44px;
+  }
 
   &__options {
     height: 32px;
@@ -62,6 +68,9 @@
       margin: 0px;
       border: none;
       background: none;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 14px;
+      line-height: 24px;
       cursor: pointer;  
 
       &:hover {

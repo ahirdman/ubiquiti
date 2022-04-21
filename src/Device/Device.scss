@@ -1,11 +1,18 @@
 @use '../base';
 
+.device-container {
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin-top: 50%;
+}
+
 .device {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  // max-width: 688px;
+  max-width: 688px;
 
   &__image {
 
@@ -21,7 +28,11 @@
   &__row {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #EDEDF0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 24px;
+    width: 400px;
 
     &--title {
 

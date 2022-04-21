@@ -31,15 +31,21 @@ const Filter = ({ setDisplayFilter, checked, setChecked }: IFilterProps) => {
       </section>
       <p className="filter__title">Product Line</p>
       {checked && (productLines.map((line: string, index: number) => (
-        <div className="filter__option" key={index}>
+        <div className="filter__options" key={index}>
           <input
+            className="filter__options--checkbox"
             type="checkbox"
             id={`checkobx-${index}`}
             name={line}
             checked={checked[index].isChecked}
             onChange={() => handleOnChange(index)}
           />
-          <label htmlFor={`checkobx-${index}`}>{line}</label>
+          <label
+            htmlFor={`checkobx-${index}`}
+            className="filter__options--label"
+          >
+            {line}
+          </label>
         </div>
       )))}
     </section>
