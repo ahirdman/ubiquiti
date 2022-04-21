@@ -30,15 +30,17 @@
 
 .table-row {
   margin: .5em;
-  border: 1px solid black;
+  cursor: pointer;
   
   &:hover {
     background-color: base.$table-row-hover;
   }
   
-  // &__img {
-
-  // }
+  &__img {
+    border: 1px solid black;
+    display: flex;
+    justify-content: right;
+  }
   
   // &__line {
 

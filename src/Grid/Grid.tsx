@@ -26,7 +26,7 @@ const Grid = ({ devices }: IDeviceViewProps) => {
             />
           </section>
           <section className="card__info">
-            <h4 className="card__name">{device.product.name}</h4>
+            <p className="card__name">{device.product.name}</p>
             <p className="card__line">{device.line.name}</p>
           </section>
         </section>

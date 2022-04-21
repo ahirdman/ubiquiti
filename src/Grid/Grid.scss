@@ -13,6 +13,11 @@
   border: 1px solid base.$grid-card-border;
   border-radius: 8px;
   margin: .7em;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid base.$blue;
+  }
 
   &__img {
     background-color: base.$grey;
@@ -24,16 +29,25 @@
   }
 
   &__info {
-    height: 68px;
+    margin: 12px;
     justify-content: left;
     align-items: center;
   }
-
+  
   &__name {
-    margin: auto;
+    height: 24px;
+    margin: 0px;
+    overflow-x: scroll;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
   }
 
   &__line {
-    margin: auto;
+    margin: 0px;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+    line-height: 20px;
   }
 }
