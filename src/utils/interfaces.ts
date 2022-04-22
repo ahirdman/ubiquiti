@@ -73,6 +73,7 @@ interface IFilterProps {
   setDisplayFilter: (prevState: boolean) => void
   checked?: CheckBox[]
   setChecked: (prevState: CheckBox[]) => void
+  productLines?: string[]
 }
 
 interface IToolbarProps {

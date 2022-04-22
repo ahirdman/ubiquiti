@@ -1,11 +1,10 @@
-@use '../base';
+@import '../style';
 
 .device-container {
-  margin-top: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin-top: 50%;
+  height: 80vh;
 }
 
 .device {
@@ -15,31 +14,40 @@
   max-width: 688px;
 
   &__image {
-
+    width: 256px;
+    text-align: center;
   }
 
   &__table {
     display: flex;
     flex-direction: column;
     width: 400px;
-
   }
 
   &__row {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #EDEDF0;
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 14px;
-    line-height: 24px;
-    width: 400px;
+    border-bottom: 1px solid $border-light;
+    @include text;
+    height: 28px;
+  }
+}
 
-    &--title {
+@media screen and (max-width: 755px) {
+  .device {
+    flex-direction: column;
 
+    &__table {
+      width: 300px;
     }
+    
+    &__row {
+      height: 56px;
+      text-align: right;
 
-    &--info {
-
+      &--info {
+        width: 150px;
+      }
     }
   }
 }

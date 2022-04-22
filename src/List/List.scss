@@ -1,4 +1,4 @@
-@use '../base';
+@import '../style';
 
 .table-list {
   margin-top: 1em;
@@ -11,48 +11,38 @@
   &__header {
     display: flex;
     text-align: left;
+    align-items: center;
     padding-bottom: .2em;
-    cursor: auto;
-    border-bottom: 1px solid base.$grid-card-border;
+    border-bottom: 1px solid $border-dark;
 
     &:hover {
       background-color: none;
     }
     
     &--counter {
-      width: 136px;
+      @include text($color: $font-color-grey);
       text-align: center;
-      font-size: 12px;
-      line-height: 24px;
-      color: base.$list-header-counter;
+      width: 136px;
     }
     
-    &--line {
-      width: 254px;
-      color: rgba(0, 0, 0, 0.65);
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 24px;
-    }
-    
+    &--line,
     &--name {
-      color: rgba(0, 0, 0, 0.65);
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 24px;
+      @include text($weight: 700);
       width: 254px;
     }
   }
   
   &__row {
+    @include text();
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid base.$grid-card-border;
+    border-bottom: 1px solid $border-dark;
     height: 33px;
 
     &:hover {
-      background-color: base.$table-row-hover;
+      background-color: $neutral-light;
+      color: $blue;
     }
     
     &--img {
@@ -62,16 +52,38 @@
     
     &--line {
       width: 254px;
-      color: rgba(0, 0, 0, 0.65);
-      font-size: 14px;
-      line-height: 24px;
     }
-  
     &--name {
-      color: rgba(0, 0, 0, 0.65);
-      font-size: 14px;
-      line-height: 24px;
-      width: 254px;
+      width: 270px;
+    }
+  }
+}
+
+@media screen and (max-width: 755px) {
+  
+  .table-list{
+    margin-top: .5em;
+    margin-right: 1.5em;
+    margin-bottom: .5em;
+    margin-left: 1.5em;
+
+    &__header,
+    &__row {
+      height: 66px;
+
+      &--counter,
+      &--img {
+        width: 60px;
+        display: none;
+      }
+
+      &--line {
+        width: 200px;
+      }
+      
+      &--name {
+        width: 100%;
+      }
     }
   }
 }

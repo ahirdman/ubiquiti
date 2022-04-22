@@ -1,10 +1,10 @@
-@use '../base';
+@import '../style';
 
 .header {
-  background-color: base.$grey;
+  background-color: $neutral-dark;
   height: 56px;
   align-items: center;
-
+  z-index: 2;
 
   &__img {
     position: absolute;
@@ -20,16 +20,14 @@
     align-items: center;
 
     &--title {
-      color: base.$header-text;
+      @include text($size: 20px, $color: $font-color-darkgrey);
       letter-spacing: -0.5px;
-      font-size: 20px;
       margin-top: 0px;
       margin-bottom: 0px;
     }
 
     &--author {
-       font-size: 14px;
-       color: rgba(0, 0, 0, 0.65);
+      @include text;
     }
   }
 }

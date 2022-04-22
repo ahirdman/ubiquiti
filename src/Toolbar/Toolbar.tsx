@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { filterDevices, searchDevices, productLines } from '../utils';
+import {
+  filterDevices, searchDevices, listProductLines,
+} from '../utils';
 import { IToolbarProps } from '../utils/interfaces';
 import { CheckBox } from '../utils/types';
 import Filter from '../Filter/Filter';
@@ -19,16 +21,21 @@ const Toolbar = ({
   const [displayFilter, setDisplayFilter] = useState(false);
   const [query, setQuery] = useState('');
   const [checked, setChecked] = useState<CheckBox[]>();
+  const [productLines, setProductLines] = useState<string[]>();
 
   const navigate = useNavigate();
   const location = useLocation();
   const detailsPath = location.pathname.includes('device');
 
   useEffect(() => {
-    const products = productLines
+    if (!devices) return;
+    const linesArray = listProductLines(devices);
+    const formattedForCheckBox = linesArray
       .map((productLine: string) => ({ isChecked: false, productLine }));
-    setChecked(products);
-  }, []);
+
+    setChecked(formattedForCheckBox);
+    setProductLines(linesArray);
+  }, [devices]);
 
   useEffect(() => {
     if (!devices || !checked) return;
@@ -96,6 +103,7 @@ const Toolbar = ({
         setDisplayFilter={setDisplayFilter}
         checked={checked}
         setChecked={setChecked}
+        productLines={productLines}
       />
       )}
     </nav>

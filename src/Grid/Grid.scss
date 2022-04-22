@@ -1,4 +1,4 @@
-@use '../base';
+@import '../style';
 
 .grid-container {
   display: flex;
@@ -10,17 +10,17 @@
 .card {
   width: 233px;
   height: 193px;
-  border: 1px solid base.$grid-card-border;
+  border: 1px solid $border-dark;
   border-radius: 8px;
   margin: .7em;
   cursor: pointer;
 
   &:hover {
-    border: 1px solid base.$blue;
+    border: 1px solid $blue;
   }
 
   &__img {
-    background-color: base.$grey;
+    background-color: $neutral-dark;
     height: 124px;
     display: flex;
     justify-content: center;
@@ -35,19 +35,14 @@
   }
   
   &__name {
+    @include text($weight: 700);
+    overflow-x: scroll;
     height: 24px;
     margin: 0px;
-    overflow-x: scroll;
-    color: rgba(0, 0, 0, 0.65);
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 24px;
   }
 
   &__line {
+    @include text($size: 12px, $height: 20px, $color: $font-color-light);
     margin: 0px;
-    color: rgba(0, 0, 0, 0.45);
-    font-size: 12px;
-    line-height: 20px;
   }
 }

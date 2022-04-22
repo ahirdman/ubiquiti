@@ -7,7 +7,6 @@ import Toolbar from './Toolbar/Toolbar';
 import List from './List/List';
 import Grid from './Grid/Grid';
 import Device from './Device/Device';
-import './App.scss';
 
 const App = () => {
   const [devices, setDevices] = useState<IDevice[]>();
@@ -41,7 +40,7 @@ const App = () => {
               deviceDetails={deviceDetails}
               setDeviceDetails={setDeviceDetails}
             />
-          )}
+                )}
         />
       </Routes>
     </>

@@ -20,7 +20,10 @@ const searchDevices = (searchText: string, deviceArray: IDevice[]) => {
 const filterDevices = (filterArray: string[], searchObject: IDevice[]): IDevice[] => searchObject
   .filter((device: IDevice) => filterArray.includes(device.line.name));
 
-const productLines = ['UniFi', 'UniFi LTE', 'UniFi Protect', 'UniFi Access', 'airMAX', 'EdgeMAX'];
+const listProductLines = (devices: IDevice[]) => {
+  const productLines = devices.map((device: IDevice) => device.line.name);
+  return Array.from(new Set(productLines));
+};
 
 const deviceGenerator = (device: IDeviceDetails) => [
   {
@@ -58,6 +61,6 @@ export {
   getDevices,
   searchDevices,
   filterDevices,
-  productLines,
   deviceGenerator,
+  listProductLines,
 };
