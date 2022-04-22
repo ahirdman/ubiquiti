@@ -1,9 +1,6 @@
 import { IDevice, IDeviceDetails } from './interfaces';
 
-const imgUrlCreator = (id: string, res: number) => {
-  const resolution = `${res}x${res}`;
-  return `https://static.ui.com/fingerprint/ui/icons/${id}_${resolution}.png`;
-};
+const imgUrlCreator = (id: string, res: number) => `https://static.ui.com/fingerprint/ui/icons/${id}_${res}x${res}.png`;
 
 const getDevices = async (deviceCallback: Function, filterCallback: Function) => {
   const query = await fetch('https://static.ui.com/fingerprint/ui/public.json');
@@ -25,7 +22,7 @@ const listProductLines = (devices: IDevice[]) => {
   return Array.from(new Set(productLines));
 };
 
-const deviceGenerator = (device: IDeviceDetails) => [
+const deviceFormatter = (device: IDeviceDetails) => [
   {
     title: 'Product Line',
     info: device.product.name,
@@ -61,6 +58,6 @@ export {
   getDevices,
   searchDevices,
   filterDevices,
-  deviceGenerator,
+  deviceFormatter,
   listProductLines,
 };

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Device.scss';
 import { useParams } from 'react-router-dom';
 import { IDevice, IDeviceObject, IDeviceProps } from '../utils/interfaces';
-import { imgUrlCreator, deviceGenerator } from '../utils';
+import { imgUrlCreator, deviceFormatter } from '../utils';
 
 const Device = ({ devices, setDeviceDetails, deviceDetails }: IDeviceProps) => {
   const { shortname } = useParams();
@@ -10,7 +10,7 @@ const Device = ({ devices, setDeviceDetails, deviceDetails }: IDeviceProps) => {
 
   useEffect(() => {
     if (!selectedDevice) return;
-    setDeviceDetails(deviceGenerator(selectedDevice));
+    setDeviceDetails(deviceFormatter(selectedDevice));
   }, []);
 
   return (

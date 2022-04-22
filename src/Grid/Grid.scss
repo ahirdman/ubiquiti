@@ -46,3 +46,19 @@
     margin: 0px;
   }
 }
+
+@media screen and (max-width: 755px) {
+  .grid-container {
+    margin-top: .5em;
+  }
+
+  .card {
+    width: 173px;
+    height: 133px;
+    margin: .3em;
+
+    &__img {
+      height: 64px;
+    }
+  }
+}
